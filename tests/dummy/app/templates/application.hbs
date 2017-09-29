@@ -1,3 +1,21 @@
 <h2 id="title">Welcome to Ember</h2>
 
+{{paper-input-mask
+	mask='currency'
+	value=currency
+	label='currency mask'
+	class='layout-row flex-100'
+	onChange=(action (mut currency))
+}}
+
+<br /> <br />
+
+{{paper-input-mask
+	mask='date'
+	value=date
+	label='date mask'
+	class='layout-row flex-100'
+	onChange=(action (mut date))
+}}
+
 {{outlet}}

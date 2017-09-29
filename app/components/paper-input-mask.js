@@ -1,0 +1,1 @@
+export { default } from 'paper-input-mask/components/paper-input-mask';
