@@ -15,7 +15,13 @@
   "scripts": {
 	"build": "ember build",
 	"start": "ember server",
-	"test": "ember try:each"
+	"test": "ember try:each",
+	"postrelease": "npm publish",
+	"release": "npm version patch",
+	"release-patch": "npm version patch",
+	"release-minor": "npm version minor",
+	"release-major": "npm version major",
+	"postversion": "git push && git push --tags"
   },
   "dependencies": {
 	"ember-cli-babel": "^6.6.0",
