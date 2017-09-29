@@ -1,5 +1,5 @@
 /* global Inputmask */
-import { once } from '@ember/runloop';
+import { once, next } from '@ember/runloop';
 import { computed, observer } from '@ember/object';
 import PaperInput from 'ember-paper/components/paper-input';
 import layout from 'ember-paper/templates/components/paper-input';
@@ -19,6 +19,8 @@ export default PaperInput.extend({
 
 	showMaskOnFocus: true,
 	showMaskOnHover: true,
+
+	getMaskedValue: false,
 	clearIncomplete: false,
 
 	options: computed(function() {
@@ -67,7 +69,7 @@ export default PaperInput.extend({
 		let mask = this.get('mask');
 		let options = this.get('options');
 
-		element.inputmask && element.inputmask.remove();
+		element && element.inputmask && element.inputmask.remove();
 		let inputmask = new Inputmask(mask, options);
 		inputmask.mask(element);
 
@@ -104,21 +106,6 @@ export default PaperInput.extend({
 		this.setMask();
 	},
 
-	updateValue() {
-		let value = this.get('value');
-		let element = this.get('field');
-
-		let _value = element
-			&& element.inputmask
-			&& element.inputmask.unmaskedvalue()
-
-		element
-			&& element.inputmask
-			&& value !== _value
-			&& value !== 'undefined'
-			&& (element.value = value);
-	},
-
 	_maskShouldChange: observer(
 		'mask',
 		'regex',
@@ -134,13 +121,37 @@ export default PaperInput.extend({
 		}
 	),
 
-	// Unmask the value of the field and set the value property
-	setValue: observer('maskedValue', function() {
+	unmaskedValue() {
 		let element = this.get('field');
 
-		element && element.inputmask
-			&& this.sendAction('onChange',
-				element.inputmask.unmaskedvalue()
-			);
-	})
+		return element
+			&& element.inputmask
+			&& element.inputmask.unmaskedvalue();
+	},
+
+	setValue(value) {
+		let unmaskedValue = this.unmaskedValue();
+		let input = this.$('input, textarea');
+		let inputValue = input.val();
+
+		![inputValue, unmaskedValue].includes(value)
+			&& input.val(unmaskedValue);
+	},
+
+	actions : {
+		handleInput(e) {
+			let element = this.get('field');
+			let unmaskedValue = this.unmaskedValue();
+			let getMaskedValue = this.get('getMaskedValue');
+
+			// setValue below ensures that the input value is the same as this.value
+			next(() => !this.isDestroyed && this.setValue(e.target.value));
+
+			this.sendAction('onChange', getMaskedValue ? e.target.value : unmaskedValue);
+
+			this.growTextarea();
+			this.notifyValidityChange();
+			this.set('isNativeInvalid', element && element.validity && element.validity.badInput);
+		}
+	}
 });
