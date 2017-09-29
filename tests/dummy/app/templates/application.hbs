@@ -18,4 +18,13 @@
 	onChange=(action (mut date))
 }}
 
+<br /> <br />
+
+{{paper-input-mask
+	value=nomask
+	label='date mask'
+	class='layout-row flex-100'
+	onChange=(action (mut nomask))
+}}
+
 {{outlet}}

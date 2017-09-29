@@ -1,5 +1,5 @@
 /* global Inputmask */
-import { once, debounce } from '@ember/runloop';
+import { once } from '@ember/runloop';
 import { computed, observer } from '@ember/object';
 import PaperInput from 'ember-paper/components/paper-input';
 import layout from 'ember-paper/templates/components/paper-input';
@@ -8,11 +8,11 @@ export default PaperInput.extend({
 	layout,
 
 	mask: '',
-	debounce: 0,
 
+	value: null,
 	type: 'text',
 	pattern: null,
-	value: 'value',
+	maskedValue: null,
 
 	rightAlign: false,
 	greedyMask: false,
@@ -47,7 +47,13 @@ export default PaperInput.extend({
 
 		let element = this.get('field');
 
-		element && element.inputmask.remove();
+		try {
+			element
+			&& element.inputmask
+			&& element.inputmask.remove();
+		} catch(e) {
+			console.error(e); // eslint-disable-line
+		}
 	},
 
 	setMask() {
@@ -62,12 +68,11 @@ export default PaperInput.extend({
 		let options = this.get('options');
 
 		element.inputmask && element.inputmask.remove();
-
 		let inputmask = new Inputmask(mask, options);
 		inputmask.mask(element);
 
 		// Initialize the unmasked value if it exists
-		let value = this.get('unmaskedValue');
+		let value = this.get('value');
 		value && (element.value = value);
 
 		// If the mask has changed, we need to refocus the input to show the
@@ -99,13 +104,19 @@ export default PaperInput.extend({
 		this.setMask();
 	},
 
-	updateVar() {
+	updateValue() {
+		let value = this.get('value');
 		let element = this.get('field');
 
-		element && element.inputmask
-			&& this.get('unmaskedValue')
-				!== element.inputmask.unmaskedvalue()
-			&& (element.value = this.get('unmaskedValue'));
+		let _value = element
+			&& element.inputmask
+			&& element.inputmask.unmaskedvalue()
+
+		element
+			&& element.inputmask
+			&& value !== _value
+			&& value !== 'undefined'
+			&& (element.value = value);
 	},
 
 	_maskShouldChange: observer(
@@ -123,18 +134,13 @@ export default PaperInput.extend({
 		}
 	),
 
-	// Unmask the value of the field and set the property.
-	setUnmaskedValue: observer('value', function() {
+	// Unmask the value of the field and set the value property
+	setValue: observer('maskedValue', function() {
 		let element = this.get('field');
-		element && element.inputmask
-			&& this.set('unmaskedValue', element.inputmask.unmaskedvalue());
-	}),
 
-	// When the unmaskedValue changes, set the value.
-	setValue: observer('unmaskedValue', function() {
-		let debounceTime = this.get('debounce');
-		!debounceTime
-			? this.updateVar()
-			: debounce(this, this.updateVar, debounceTime);
+		element && element.inputmask
+			&& this.sendAction('onChange',
+				element.inputmask.unmaskedvalue()
+			);
 	})
 });
