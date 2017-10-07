@@ -1,6 +1,6 @@
 {
 	"name": "paper-input-mask",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Wrapper for Jquery Input Mask with Ember Paper",
 	"keywords": [
 		"ember-addon"
@@ -59,6 +59,6 @@
 	},
 	"ember-addon": {
 		"configPath": "tests/dummy/config",
-    "demoURL": "https://devotox.github.io/paper-input-mask"
+		"demoURL": "https://devotox.github.io/paper-input-mask"
 	}
 }
