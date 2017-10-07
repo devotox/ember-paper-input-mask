@@ -37,13 +37,14 @@
 		"ember-cli": "~2.16.0-beta.1",
 		"ember-cli-dependency-checker": "^2.0.0",
 		"ember-cli-eslint": "^4.0.0",
+		"ember-cli-github-pages": "^0.1.2",
 		"ember-cli-htmlbars-inline-precompile": "^1.0.0",
 		"ember-cli-inject-live-reload": "^1.4.1",
 		"ember-cli-qunit": "^4.0.0",
 		"ember-cli-sass": "^7.0.0",
 		"ember-cli-shims": "^1.1.0",
 		"ember-cli-sri": "^2.1.0",
-		"ember-cli-uglify": "^1.2.0",
+		"ember-cli-uglify": "^2.0.0",
 		"ember-disable-prototype-extensions": "^1.1.2",
 		"ember-export-application-global": "^2.0.0",
 		"ember-inputmask": "^0.4.0-beta.5",
@@ -57,6 +58,7 @@
 		"node": "^4.5 || 6.* || >= 7.*"
 	},
 	"ember-addon": {
-		"configPath": "tests/dummy/config"
+		"configPath": "tests/dummy/config",
+    "demoURL": "https://devotox.github.io/paper-input-mask"
 	}
 }

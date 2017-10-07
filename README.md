@@ -1,26 +1,17 @@
 # paper-input-mask
 
-This README outlines the details of collaborating on this Ember addon.
+[![Ember Observer Score](http://emberobserver.com/badges/paper-input-mask.svg)](http://emberobserver.com/addons/paper-input-mask)
+[![Build Status](https://travis-ci.org/devotox/paper-input-mask.svg)](http://travis-ci.org/devotox/ember-paper-input-mask)
+[![Coverage Status](https://coveralls.io/repos/github/devotox/mber-loggly/badge.svg)](https://coveralls.io/github/devotox/empber-paper-input-mask)
+[![NPM Version](https://badge.fury.io/js/paper-input-mask.svg)](http://badge.fury.io/js/paper-input-mask)
+[![NPM Downloads](https://img.shields.io/npm/dm/paper-input-mask.svg)](https://www.npmjs.org/package/paper-input-mask)
+[![Greenkeeper](https://badges.greenkeeper.io/devotox/ember-paper-input-mask.svg)](https://greenkeeper.io/)
+
+## Description
+Input addon for [Ember Paper](https://github.com/miguelcobain/ember-paper)
 
 ## Installation
+* `ember install paper-input-mask`
 
-* `git clone <repository-url>` this repository
-* `cd paper-input-mask`
-* `npm install`
-
-## Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+#### License
+MIT license.
