@@ -54,7 +54,7 @@ export default PaperInput.extend({
 			&& element.inputmask
 			&& element.inputmask.remove();
 		} catch(e) {
-			console.error(e); // eslint-disable-line
+			// console.error(e); // eslint-disable-line
 		}
 	},
 
