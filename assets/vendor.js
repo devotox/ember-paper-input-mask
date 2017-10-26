@@ -5444,7 +5444,7 @@ e.default=t.default.extend({layout:n.default,mask:"",value:null,type:"text",patt
 var e=this.$("input").get(0)
 this.set("field",e),this.propertyDidChange("mask")}},willDestroyElement:function(){if(!this.isDestroyed){this._super.apply(this,arguments)
 var e=this.get("field")
-try{e&&e.inputmask&&e.inputmask.remove()}catch(e){console.error(e)}}},setMask:function(){Inputmask.extendDefinitions({2:{validator:"[2-9]"}})
+try{e&&e.inputmask&&e.inputmask.remove()}catch(e){}}},setMask:function(){Inputmask.extendDefinitions({2:{validator:"[2-9]"}})
 var e=this.get("field")
 if(e){var t=this.get("mask"),n=this.get("options")
 e&&e.inputmask&&e.inputmask.remove(),new Inputmask(t,n).mask(e)
