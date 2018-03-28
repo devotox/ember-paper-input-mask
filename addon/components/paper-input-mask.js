@@ -29,7 +29,7 @@ export default PaperInput.extend({
 
 	// Initialize the mask by forcing a
 	// call to the updateMask function
-	didInsertElement: function() {
+	didInsertElement() {
 		if (this.isDestroyed) { return; }
 
 		this._super(...arguments);
@@ -53,7 +53,8 @@ export default PaperInput.extend({
 			element
 			&& element.inputmask
 			&& element.inputmask.remove();
-		} catch(e) {
+		}
+		catch(e) {
 			// console.error(e); // eslint-disable-line
 		}
 	},
@@ -81,7 +82,9 @@ export default PaperInput.extend({
 		// proper mask preview. Since the caret is not positioned by the focus
 		// even, but the click event, we need to trigger a click as well.
 		if (element === document.activeElement) {
-			element.blur(); element.focus(); element.click();
+			element.blur();
+			element.focus();
+			element.click();
 		}
 	},
 
@@ -138,7 +141,7 @@ export default PaperInput.extend({
 			&& input.val(unmaskedValue);
 	},
 
-	actions : {
+	actions: {
 		handleInput(e) {
 			let element = this.get('field');
 			let unmaskedValue = this.unmaskedValue();
