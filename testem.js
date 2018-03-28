@@ -2,11 +2,7 @@
 module.exports = {
   parallel: 3,
   disable_watching: true,
-  test_page: [
-    'tests/index.html?hidepassed&filter=acceptance',
-    'tests/index.html?hidepassed&filter=integration',
-    'tests/index.html?hidepassed&filter=unit'
-  ],
+  test_page: 'tests/index.html?hidepassed',
   launch_in_ci: [
     'Chrome'
   ],
