@@ -1,17 +1,19 @@
 language: node_js
 node_js:
-- '4'
+- '6'
 sudo: false
 dist: trusty
 addons:
   chrome: stable
 cache:
   directories:
-  - "$HOME/.npm"
+  - '$HOME/.npm'
+  - '$HOME/.cache'
+  - '$HOME/.yarn-cache'
 env:
   matrix:
-  - EMBER_TRY_SCENARIO=ember-lts-2.8
   - EMBER_TRY_SCENARIO=ember-lts-2.12
+  - EMBER_TRY_SCENARIO=ember-lts-2.16
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
@@ -25,13 +27,24 @@ matrix:
 before_install:
 - npm config set spin false
 - npm install -g npm@4
+- npm install -g yarn
 - npm --version
 - npm install -g greenkeeper-lockfile@1
+- npm install -g codecov
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 script:
-- node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+- COVERAGE=true node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+- codecov
 notifications:
+  webhooks:
+    urls:
+    - https://webhook.atomist.com/travis
+    on_success: always
+    on_failure: always
+    on_start: always
+    on_cancel: always
+    on_error: always
   slack:
     rooms:
       secure: tOeQS4/RpG2hu+5L0qDs0m5s200m23wPAP2KUrsFDCTugARyNqcMHHLirKmRdrJi4G0pQTL9U9L1+uEUIgL4x2NRKcvlt5vDlITUvWo1xGjKSz+2acLNXtV4dRK73yUW6witx0VRspRvwEG/Y7LewHJDdPpo2KpXTfQ3VO6y7O3vqsAVcLvO6vim6qK+Yq8RWed0XKy+9T4sckRmAcWV0lLJEzFV8kfcvvDbSFcRAcJqE0oBWIRqKVozi18Z1L2aWxKl8LpJyU7YgLW0q1NxxfDPfpY9sqIgmkHosuUt9Q+Xj042Hp8FoZbHDeCkAWZ/g+BbPtXUVOeIA5udM5MDcIHSt2D7y/6wR6WuqoqVkJZz3UsxmP2hrU5RJNWVgJ+/AGkYaSKCm6gpsVrqQRt8829MxvVpmFh8t5gNODMfCcf2gBjHqT0Y59s5WmPHmQeMuMXNlUNwEM/lodE1v4FMoOxHPGUnqTGoMK98PQO6uunH8RIC8Eg1yBPoRzlZcJfM4e1ZGaHGhlpZKKAPRf/w2OmQCZfzIYw2bbf6Eq9VFBeKjDplwaY5jyrgi6HD3AU7Tj72XdHbV+ugHUdlXldmdCJ0Fbg5UYDNDg92VrDUeZGotpGr0j52m2rKnicELnAZb8/Z/sRhwTTedwd9MvHezbir3YXlxSPcEv8Lw37Og3I=
