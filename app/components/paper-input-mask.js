@@ -1,1 +1,1 @@
-export { default } from 'paper-input-mask/components/paper-input-mask';
+export { default } from 'ember-paper-input-mask/components/paper-input-mask';

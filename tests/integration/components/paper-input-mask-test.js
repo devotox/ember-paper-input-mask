@@ -1,24 +1,26 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('paper-input-mask', 'Integration | Component | paper input mask', {
-	integration: true
-});
+module('Integration | Component | paper-input-mask', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-	// Set any properties with this.set('myProperty', 'value');
-	// Handle any actions with this.on('myAction', function(val) { ... });
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-	this.render(hbs`{{paper-input-mask onChange=null}}`);
+    await render(hbs`{{paper-input-mask onChange=null}}`);
 
-	assert.equal(this.$().text().trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
-	// Template block usage:
-	this.render(hbs`
-    {{#paper-input-mask onChange=null}}
-      template block text
-    {{/paper-input-mask}}
-  `);
+    // Template block usage:
+    await render(hbs`
+      {{#paper-input-mask onChange=null}}
+        template block text
+      {{/paper-input-mask}}
+    `);
 
-	assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
 });

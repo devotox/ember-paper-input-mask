@@ -1,7 +1,11 @@
-/* global Inputmask */
+import Inputmask from 'inputmask';
+
 import { once, next } from '@ember/runloop';
+
 import { computed, observer } from '@ember/object';
+
 import PaperInput from 'ember-paper/components/paper-input';
+
 import layout from 'ember-paper/templates/components/paper-input';
 
 export default PaperInput.extend({
@@ -38,7 +42,7 @@ export default PaperInput.extend({
 
 		this.set('field', field);
 
-		this.propertyDidChange('mask');
+		this.notifyPropertyChange('mask');
 	},
 
 	// Remove the mask from the input
@@ -150,7 +154,7 @@ export default PaperInput.extend({
 			// setValue below ensures that the input value is the same as this.value
 			next(() => !this.isDestroyed && this.setValue(e.target.value));
 
-			this.sendAction('onChange', getMaskedValue ? e.target.value : unmaskedValue);
+			this.sendAction('onChange', getMaskedValue ? e.target.value : unmaskedValue); // eslint-disable-line
 
 			this.growTextarea();
 			this.notifyValidityChange();
