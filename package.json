@@ -16,7 +16,8 @@
   "repository": "https://github.com/devotox/ember-paper-input-mask",
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
+    "start": "ember serve",
+    "preversion": "npm test",
     "test": "ember try:each",
     "precommit": "lint-staged",
     "update": "ncu -u -a; yarn",

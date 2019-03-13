@@ -12,7 +12,7 @@ ember-paper-input-mask
 
 Input Mask addon for [Ember Paper](https://github.com/miguelcobain/ember-paper)
 
-[DEMO](http://devotox.github.io/ember-paper-input-mask)
+[DEMO](https://devotox.github.io/ember-paper-input-mask)
 
 Installation
 ------------------------------------------------------------------------------
