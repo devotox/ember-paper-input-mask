@@ -8,6 +8,20 @@ import PaperInput from 'ember-paper/components/paper-input';
 
 import layout from 'ember-paper/templates/components/paper-input';
 
+Inputmask.extendAliases({
+	date: {
+		alias: 'datetime',
+		inputFormat: 'yyyy-mm-dd'
+	},
+	time: {
+		alias: 'datetime',
+		inputFormat: 'HH:MM:ss'
+	},
+	datetime: {
+		inputFormat: 'yyyy-mm-dd HH:MM:ss'
+	}
+});
+
 export default PaperInput.extend({
 	layout,
 
@@ -34,11 +48,11 @@ export default PaperInput.extend({
 	// Initialize the mask by forcing a
 	// call to the updateMask function
 	didInsertElement() {
-		if (this.isDestroyed) { return; }
+		if (this.isDestroyed || this.isDestroying) { return; }
 
 		this._super(...arguments);
 
-		let field = this.$('input').get(0);
+		let field = this.element.querySelector('input, textarea');
 
 		this.set('field', field);
 
@@ -47,7 +61,7 @@ export default PaperInput.extend({
 
 	// Remove the mask from the input
 	willDestroyElement() {
-		if (this.isDestroyed) { return; }
+		if (this.isDestroyed || this.isDestroying) { return; }
 
 		this._super(...arguments);
 
@@ -73,7 +87,7 @@ export default PaperInput.extend({
 
 		let mask = this.get('mask');
 		let options = this.get('options');
-
+		
 		element && element.inputmask && element.inputmask.remove();
 		let inputmask = new Inputmask(mask, options);
 		inputmask.mask(element);
@@ -99,7 +113,10 @@ export default PaperInput.extend({
 	updateMask() {
 		this.get('mask').toLowerCase() === 'regex'
 			&& this.set('options.mask', '')
-			|| this.set('options.regex', this.get('pattern') || this.get('regex'));
+			|| this.set('options.regex', 
+				this.get('pattern') 
+				|| this.get('regex')
+			);
 
 		this.setProperties({
 			'options.greedy': this.get('greedyMask'),
@@ -113,7 +130,7 @@ export default PaperInput.extend({
 		this.setMask();
 	},
 
-	_maskShouldChange: observer(
+	_maskShouldChange: observer( // eslint-disable-line
 		'mask',
 		'regex',
 		'pattern',
@@ -137,13 +154,17 @@ export default PaperInput.extend({
 	},
 
 	setValue(value) {
+		if (this.isDestroyed || this.isDestroying) { return; }
+
+		let input = this.get('field');
+		let inputValue = input.value;
 		let unmaskedValue = this.unmaskedValue();
-		let input = this.$('input, textarea');
-		let inputValue = input.val();
 
 		![inputValue, unmaskedValue].includes(value)
-			&& input.val(unmaskedValue);
+			&& (input.value = unmaskedValue);
 	},
+
+	onChange() { },
 
 	actions: {
 		handleInput(e) {
@@ -152,9 +173,9 @@ export default PaperInput.extend({
 			let getMaskedValue = this.get('getMaskedValue');
 
 			// setValue below ensures that the input value is the same as this.value
-			next(() => !this.isDestroyed && this.setValue(e.target.value));
+			next(() => this.setValue(e.target.value));
 
-			this.sendAction('onChange', getMaskedValue ? e.target.value : unmaskedValue); // eslint-disable-line
+			this.onChange(getMaskedValue ? e.target.value : unmaskedValue); // eslint-disable-line
 
 			this.growTextarea();
 			this.notifyValidityChange();

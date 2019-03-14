@@ -14,13 +14,18 @@ Input Mask addon for [Ember Paper](https://github.com/miguelcobain/ember-paper)
 
 [DEMO](https://devotox.github.io/ember-paper-input-mask)
 
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
 Installation
 ------------------------------------------------------------------------------
 
 ```
 ember install ember-paper-input-mask
 ```
-
 
 Usage
 ------------------------------------------------------------------------------
@@ -32,33 +37,10 @@ Usage
 Mask Options: [Input Mask](https://github.com/RobinHerbots/Inputmask)
 Paper Input Options: [Ember Paper](https://github.com/miguelcobain/ember-paper)
 
-
 Contributing
 ------------------------------------------------------------------------------
 
-### Installation
-
-* `git clone <repository-url>`
-* `cd ember-paper-input-mask`
-* `yarn install`
-
-### Linting
-
-* `yarn lint:js`
-* `yarn lint:js --fix`
-
-### Running tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-### Running the dummy application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 License
 ------------------------------------------------------------------------------

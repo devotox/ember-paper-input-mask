@@ -1,30 +1,80 @@
 <h2 id="title">Ember Paper Input Mask</h2>
 
 {{paper-input-mask
-	mask='currency'
+	mask="currency"
 	value=currency
-	label='currency mask'
-	class='layout-fill flex-50'
+	label="currency mask"
+	class="layout-fill flex-50"
 	onChange=(action (mut currency))
 }}
 
-<br /> <br />
+<br> <br>
 
 {{paper-input-mask
-	mask='date'
+	mask="date"
 	value=date
-	label='date mask'
-	class='layout-fill flex-50'
+	label="date mask"
+	class="layout-fill flex-50"
 	onChange=(action (mut date))
+	options=(hash inputFormat="dd/mm/yyyy" outputFormat="yy-mm-dd")
 }}
 
-<br /> <br />
+<br> <br>
+
+{{paper-input-mask
+	mask="time"
+	value=time
+	label="time mask"
+	class="layout-fill flex-50"
+	onChange=(action (mut time))
+}}
+
+<br> <br>
+
+{{paper-input-mask
+	mask="datetime"
+	value=datetime
+	label="datetime mask"
+	class="layout-fill flex-50"
+	onChange=(action (mut datetime))
+	options=(hash inputFormat="dd/mm/yyyy HH:MM:ss" outputFormat="yy-mm-dd HH:MM:ss")
+}}
+
+<br> <br>
 
 {{paper-input-mask
 	value=nomask
-	label='No mask'
-	class='layout-fill flex-50'
+	label="No mask"
+	class="layout-fill flex-50"
 	onChange=(action (mut nomask))
 }}
 
-{{outlet}}
+<br> <br>
+
+<div>
+  Currency: {{currency}}
+</div>
+
+<br> <br>
+
+<div>
+  Date: {{date}}
+</div>
+
+<br> <br>
+
+<div>
+  Time: {{time}}
+</div>
+
+<br> <br>
+
+<div>
+  Datetime: {{datetime}}
+</div>
+
+<br> <br>
+
+<div>
+  No Mask: {{nomask}}
+</div>
