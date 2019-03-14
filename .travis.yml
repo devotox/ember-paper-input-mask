@@ -91,6 +91,6 @@ deploy:
   email: devo.tox.89@gmail.com
   api_key:
       secure: EfQbiaUMapxYcocCH35YQek33IqYXSnSLu6/jZFIPGMjKMxb6zQHoVvTcS8MD6rf3Hrtt6R08lZfEO9I909VKxgx11sMbPkApAOpT+pyoJXGfqMvQ3nzuHOOEgLJh/Y9DOj5emirDdnoxVotn1jeuoIcuJ8SUvI6E6qKpLXRylwDhhriExeK8NuTb9mnjPCZGjaEdn2MzK4wAGvMWodIGPEh8EpxHKFVKLGzH3PKcma+fzqFX9Mc5piY8zIpRXrsyp7Gakx09yl1N71uDVEIP8gYNNY98/GtxU7mxkjD56M2swZPjEyG52uolzd7c7Mmj67GNogsWW6WFThLmlawjisaYPFV9NaK5Je5i6VnNRTa68U46UZbB5hS0ovOmrhK6+ZSdUr8wQW+KnTWZ8zv04va9zDjEMebn5DMHBz6Yx/CvETXPKjebKdaAyb1YugOKvsDIvUs/BJl53IyqPcF3yeTSxhW5pFOBAoTrnG17cGyet2g04+GBBWliOXnWW5TLOhATSk83oicOGFgegXmI6QEipC3g8N67GTb5CC11zLJeYbWP8Sj5RNP+vnxn4WhU275qzPgPiM5qp771N6Ls+X6VtiEkQmQGHf1Iux4Xl6NAeJ+3/7+QFeqghYOga1LIcDPrmznpXD1EEPLl6DXvgcoCY1niRaGqsW55lUD5Uk=
-    on:
+  on:
     tags: true
     repo: devotox/ember-paper-input-mask
