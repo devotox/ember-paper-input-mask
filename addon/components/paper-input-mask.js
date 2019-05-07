@@ -119,6 +119,7 @@ export default PaperInput.extend({
 			);
 
 		this.setProperties({
+			'options.prefix': this.get('maskPrefix'),
 			'options.greedy': this.get('greedyMask'),
 			'options.rightAlign': this.get('rightAlign'),
 			'options.placeholder': this.get('maskPlaceholder'),
