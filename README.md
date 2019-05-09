@@ -3,8 +3,8 @@
 [![Coverage Status](https://codecov.io/gh/devotox/ember-paper-input-mask/branch/master/graph/badge.svg)](https://codecov.io/gh/devotox/ember-paper-input-mask)
 [![NPM Version](https://badge.fury.io/js/ember-paper-input-mask.svg)](http://badge.fury.io/js/ember-paper-input-mask)
 [![NPM Downloads](https://img.shields.io/npm/dm/ember-paper-input-mask.svg)](https://www.npmjs.org/package/ember-paper-input-mask)
-[![Dependency Status](https://david-dm.org/poetic/ember-paper-input-mask.svg)](https://david-dm.org/poetic/ember-paper-input-mask)
-[![DevDependency Status](https://david-dm.org/poetic/ember-paper-input-mask/dev-status.svg)](https://david-dm.org/poetic/ember-paper-input-mask#info=devDependencies)
+[![Dependency Status](https://david-dm.org/devotox/ember-paper-input-mask.svg)](https://david-dm.org/devotox/ember-paper-input-mask)
+[![DevDependency Status](https://david-dm.org/devotox/ember-paper-input-mask/dev-status.svg)](https://david-dm.org/devotox/ember-paper-input-mask#info=devDependencies)
 [![Greenkeeper](https://badges.greenkeeper.io/devotox/ember-paper-input-mask.svg)](https://greenkeeper.io/)
 
 ember-paper-input-mask
