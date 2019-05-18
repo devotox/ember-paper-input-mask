@@ -176,7 +176,7 @@ export default PaperInput.extend({
 			// setValue below ensures that the input value is the same as this.value
 			next(() => this.setValue(e.target.value));
 
-			this.onChange(getMaskedValue ? e.target.value : unmaskedValue); // eslint-disable-line
+			this.onChange(getMaskedValue ? e.target.value : unmaskedValue);
 
 			this.growTextarea();
 			this.notifyValidityChange();

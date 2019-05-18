@@ -15,17 +15,17 @@
     "test": "tests"
   },
   "scripts": {
-    "lint:hbs": "ember-template-lint .",
-    "lint:js": "eslint .",
-    "start": "ember serve",
     "test": "ember test",
-    "test:all": "ember try:each",
+    "lint:js": "eslint .",
     "build": "ember build",
-    "preversion": "npm test",
+    "start": "ember serve",
+    "preversion": "npm run lint:hbs && npm run lint:js && npm test",
     "precommit": "lint-staged",
     "update": "ncu -u -a; yarn",
+    "test:all": "ember try:each",
     "postrelease": "npm publish",
     "release": "npm version patch",
+    "lint:hbs": "ember-template-lint .",
     "release-patch": "npm version patch",
     "release-minor": "npm version minor",
     "release-major": "npm version major",
@@ -52,15 +52,23 @@
   "devDependencies": {
     "@ember/optional-features": "0.7.0",
     "broccoli-asset-rev": "3.0.0",
+<<<<<<< HEAD
+    "ember-cli": "3.10.0",
+=======
     "ember-cli": "3.9.0",
+>>>>>>> ae8b087b1cf04e55253b5ab5106ea9c5bdd43979
     "ember-cli-dependency-checker": "3.1.0",
     "ember-cli-eslint": "5.1.0",
     "ember-cli-github-pages": "0.2.1",
     "ember-cli-htmlbars-inline-precompile": "2.1.0",
     "ember-cli-inject-live-reload": "2.0.1",
-    "ember-cli-sass": "10.0.0",
+    "ember-cli-sass": "10.0.1",
     "ember-cli-sri": "2.1.1",
+<<<<<<< HEAD
+    "ember-cli-template-lint": "1.0.0-beta.3",
+=======
     "ember-cli-template-lint": "1.0.0-beta.1",
+>>>>>>> ae8b087b1cf04e55253b5ab5106ea9c5bdd43979
     "ember-cli-uglify": "3.0.0",
     "ember-disable-prototype-extensions": "1.1.3",
     "ember-export-application-global": "2.0.0",
@@ -69,9 +77,15 @@
     "ember-paper": "1.0.0-beta.24",
     "ember-qunit": "4.4.1",
     "ember-resolver": "5.1.3",
+<<<<<<< HEAD
+    "ember-source": "3.10.0",
+    "ember-source-channel-url": "2.0.1",
+    "ember-try": "1.2.1",
+=======
     "ember-source": "3.9.1",
     "ember-source-channel-url": "1.1.0",
     "ember-try": "1.1.0",
+>>>>>>> ae8b087b1cf04e55253b5ab5106ea9c5bdd43979
     "eslint-plugin-ember": "6.4.1",
     "eslint-plugin-node": "9.0.1",
     "loader.js": "4.7.0",
