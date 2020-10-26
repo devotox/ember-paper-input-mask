@@ -87,7 +87,7 @@ export default PaperInput.extend({
 
 		let mask = this.get('mask');
 		let options = this.get('options');
-		
+
 		element && element.inputmask && element.inputmask.remove();
 		let inputmask = new Inputmask(mask, options);
 		inputmask.mask(element);
@@ -113,8 +113,8 @@ export default PaperInput.extend({
 	updateMask() {
 		this.get('mask').toLowerCase() === 'regex'
 			&& this.set('options.mask', '')
-			|| this.set('options.regex', 
-				this.get('pattern') 
+			|| this.set('options.regex',
+				this.get('pattern')
 				|| this.get('regex')
 			);
 
@@ -125,7 +125,11 @@ export default PaperInput.extend({
 			'options.placeholder': this.get('maskPlaceholder'),
 			'options.showMaskOnFocus': this.get('showMaskOnFocus'),
 			'options.showMaskOnHover': this.get('showMaskOnHover'),
-			'options.clearIncomplete': this.get('clearIncomplete')
+			'options.clearIncomplete': this.get('clearIncomplete'),
+			'options.digits': this.get('digits'),
+			'options.autoGroup': this.get('autoGroup'),
+			'options.groupSeparator': this.get('groupSeparator'),
+			'options.radixPoint': this.get('radixPoint')
 		});
 
 		this.setMask();
