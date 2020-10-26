@@ -126,7 +126,10 @@ export default PaperInput.extend({
 			'options.showMaskOnFocus': this.get('showMaskOnFocus'),
 			'options.showMaskOnHover': this.get('showMaskOnHover'),
 			'options.clearIncomplete': this.get('clearIncomplete'),
-			'options.digits': this.get('digits')
+			'options.digits': this.get('digits'),
+			'options.autoGroup': this.get('autoGroup'),
+			'options.groupSeparator': this.get('groupSeparator'),
+			'options.radixPoint': this.get('radixPoint')
 		});
 
 		this.setMask();
